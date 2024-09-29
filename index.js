@@ -21,12 +21,16 @@ if (!fs.existsSync(options.input)) {
   process.exit(1);
 }
 
-const data = JSON.parse(fs.readFileSync(options.input));
+const data = JSON.parse(fs.readFileSync(options.input, "utf-8"));
+
+const results = data.map((item) => {
+  return `${item.StockCode}-${item.ValCode}-${item.Attraction}`;
+});
 
 if (options.display) {
-  console.log(data);
+  console.log(results.join("\n"));
 }
 
 if (options.output) {
-  fs.writeFileSync(options.output, JSON.stringify(data, null, 2));
+  fs.writeFileSync(options.output, results.join("\n"));
 }
