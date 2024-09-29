@@ -5,7 +5,7 @@ const program = new Command();
 program
   .requiredOption("-i, --input <file>", "input file path")
   .option("-o, --output <file>", "output file path")
-  .option("-d, --display", "display result");
+  .option("-d, --display", "display result in console");
 
 program.parse(process.argv);
 
